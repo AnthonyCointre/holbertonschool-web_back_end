@@ -7,14 +7,13 @@ asyncio.gather.
 
 import asyncio
 import time
-import importlib
+from importlib import import_module as using
 
 
-async_comprehension_module = importlib.import_module('1-async_comprehension')
-async_comprehension = async_comprehension_module.async_comprehension
+async_comprehension = using('1-async_comprehension').async_comprehension
 
 
-async def measure_runtime():
+async def measure_runtime() -> float:
     """
     Coroutine that measures the total runtime of executing
     async_comprehension four times in parallel.
